@@ -50,5 +50,33 @@ Copy files to an instance using SFTP
 Run a command on an instance
 To quit the program, the user can enter "Q" at any time.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Workings and algorithm functionality
+
+This code defines two classes, AWSManager and SSHManager, for managing Amazon Web Services (AWS) EC2 instances and SSH connections, respectively.
+
+The AWSManager class has an initializer that takes three arguments: access_key, secret_key, and region. These are used to create a boto3.Session object, which is used to create an EC2 client. The AWSManager class has five methods:
+
+create_instance: creates a new EC2 instance using the specified AMI, instance type, minimum and maximum count, and key pair name, and returns the instance ID.
+describe_instances: retrieves information about all running instances and prints their IDs and states.
+stop_instance: stops the specified instance and prints a message indicating that it was stopped.
+terminate_instance: terminates the specified instance and prints a message indicating that it was terminated.
+get_public_ip: retrieves the public IP address of the specified instance and returns it.
+The SSHManager class has an initializer that takes three arguments: host, username, and key_file. These are used to create an SSHClient object from the paramiko library, which is used to connect to an SSH server. The SSHManager class has two methods:
+
+connect: connects to the specified SSH server using the provided username and private key file.
+run_command: executes the specified command on the connected SSH server and prints the output.
+transfer_file: copies the specified local file to the specified remote file on the connected SSH server.
+The code then prompts the user for AWS credentials and region, creates an AWSManager object, and enters a loop that prompts the user to choose an option. The available options are:
+
+Create a new EC2 instance
+Describe existing EC2 instances
+Stop an EC2 instance
+Terminate an EC2 instance
+Retrieve public IP address of an instance
+Copy files to an instance using SFTP
+Run a command on an instance
+Q. Quit
+The corresponding actions are then executed depending on the chosen option.
 
